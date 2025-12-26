@@ -10,10 +10,10 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v6
 
             - name: Set up Node.js
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@v6
               with:
                   node-version: "14"
 
@@ -23,8 +23,26 @@ jobs:
             - name: Build React app
               run: npm run build
 
+            - name: Upload Build Artifact
+              uses: actions/upload-artifact@v6
+              with:
+                  name: react-build-files
+                  path: ./dist
+                  retention-days: 1
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Download Build Artifact
+              uses: actions/download-artifact@v7
+              with:
+                  name: react-build-files
+                  path: ./dist
+
             - name: Configure AWS Credentials
-              uses: aws-actions/configure-aws-credentials@v1
+              uses: aws-actions/configure-aws-credentials@v5
               with:
                   aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

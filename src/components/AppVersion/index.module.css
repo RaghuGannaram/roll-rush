@@ -1,0 +1,62 @@
+/* Main Container */
+.versionContainer {
+    position: fixed;
+    bottom: 12px;
+    z-index: 9999; /* Ensure it floats above everything else */
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between items */
+    padding: 6px 12px;
+    
+    /* Glassmorphism Styling (Modern Look) */
+    background-color: rgba(20, 20, 20, 0.85); /* Dark semi-transparent */
+    backdrop-filter: blur(8px); /* Blurs the content behind it */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px; /* Pill shape */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Typography */
+    font-family: 'SF Mono', 'Consolas', 'Menlo', monospace; /* Technical font */
+    font-size: 11px;
+    line-height: 1;
+    cursor: help; /* change cursor to question mark on hover (hints at tooltip) */
+    
+    /* Interaction */
+    user-select: all; /* Allows easy copying for bug reports */
+    transition: all 0.2s ease;
+}
+
+/* Hover Effect */
+.versionContainer:hover {
+    background-color: rgba(20, 20, 20, 0.95);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px); /* Subtle lift */
+}
+
+/* Positioning Variants */
+.bottomLeft {
+    left: 12px;
+}
+
+.bottomRight {
+    right: 12px;
+    flex-direction: row-reverse; /* Optional: flips order if on the right */
+}
+
+/* Text Elements */
+.versionLabel {
+    color: #ffffff; /* Bright white */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.separator {
+    color: rgba(255, 255, 255, 0.15); /* Very faint vertical line */
+    font-weight: 300;
+}
+
+.meta {
+    color: rgba(255, 255, 255, 0.5); /* Dim text for Hash and ID */
+}

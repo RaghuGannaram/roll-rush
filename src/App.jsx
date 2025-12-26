@@ -4,6 +4,7 @@ import Table from "./components/Table";
 import ScoreBoard from "./components/ScoreBoard";
 import { initialBetStatus, betTime, rollTime, waitTime, resultTime } from "./constants/gameProperties";
 import styles from "./App.module.css";
+import AppVersion from "./components/AppVersion";
 
 function App() {
 	const [balance, setBalance] = useState(100);
@@ -72,6 +73,7 @@ function App() {
 			<div className={styles.Table}>
 				<Table options={betCards} setOptions={setBetCards} betState={betOn} outcome={outcome} />
 			</div>
+			<AppVersion position="left" />
 		</div>
 	);
 }
